@@ -5,19 +5,18 @@ class Solution {
         }
         int start = 1;
         int end = x;
-        int mid = -1;
         while(start<=end){
-            mid = start +(end-start)/2;
-            if((long)mid * mid < (long)x){
+            int mid = start +(end-start)/2;
+            if((long)mid * mid < x){
                 start = mid + 1; //right 
             }
             else if(mid * mid == x){
                 return mid;
             }
             else{
-                end = mid-1;
+                end = mid-1; //left
             }
         }
-        return Math.round(end);
+        return end;
     }
 }
