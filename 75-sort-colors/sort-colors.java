@@ -1,18 +1,19 @@
 class Solution {
     public void sortColors(int[] nums) {
-        boolean swapped;
-        for(int i=0; i<nums.length; i++){
-            swapped = false;
-            for(int j=1; j<nums.length-i; j++){
-                if(nums[j]<nums[j-1]){
-                    int temp = nums[j];
-                    nums[j] = nums[j-1];
-                    nums[j-1] = temp;
-                    swapped = true;
-                }
+        int low = 0, mid = 0, high = nums.length-1;
+        while(mid<=high){
+            if(nums[mid] == 0){
+                int temp = nums[low];
+                nums[low++] = nums[mid];
+                nums[mid++] = temp;
             }
-            if(!swapped){
-                break;
+            else if(nums[mid] == 1){
+                mid++;
+            }
+            else{
+                int temp = nums[mid];
+                nums[mid] = nums[high];
+                nums[high--] = temp;
             }
         }
     }
