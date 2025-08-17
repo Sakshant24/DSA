@@ -3,18 +3,22 @@ class Solution {
         int low = 0, mid = 0, high = nums.length-1;
         while(mid<=high){
             if(nums[mid] == 0){
-                int temp = nums[low];
-                nums[low++] = nums[mid];
-                nums[mid++] = temp;
+                swap(nums, low, mid);
+                low++;
+                mid++;
             }
             else if(nums[mid] == 1){
                 mid++;
             }
             else{
-                int temp = nums[mid];
-                nums[mid] = nums[high];
-                nums[high--] = temp;
+                swap(nums, mid, high);
+                high--;
             }
         }
+    }
+    public void swap(int nums[], int i, int j){
+        int temp = nums[i];
+        nums[i] = nums[j]; 
+        nums[j] = temp;
     }
 }
