@@ -1,12 +1,17 @@
 class Solution {
-    public boolean isPalindrome(int x) {
-        String s = String.valueOf(x);
-        int n = s.length();
-        for(int i=0; i<n/2; i++){
-            if(s.charAt(i) != s.charAt(n-1-i)){
-                return false;
-            }
+    public int reverse(int x){
+        int digits = (int)(Math.log10(x)) + 1; //to count digits
+        return helper(x, digits);
+    }
+    private int helper(int x, int digits){
+        if(x%10 == x){ // if it is only one digit than return that
+            return x; 
         }
-        return true;
+        int rem = x % 10;
+        return rem * (int)(Math.pow(10, digits-1)) + helper(x/10, digits-1);
+    }
+    public boolean isPalindrome(int x) {
+        if(x<0) return false;
+        return x == reverse(x);
     }
 }
